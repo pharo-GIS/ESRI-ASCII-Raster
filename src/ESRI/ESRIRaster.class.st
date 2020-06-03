@@ -49,6 +49,8 @@ Class {
 		'numberOfRows',
 		'xllcenter',
 		'yllcenter',
+		'xllcorner',
+		'yllcorner',
 		'cellSize',
 		'noData',
 		'rows'
@@ -70,7 +72,15 @@ ESRIRaster >> cellSize: anObject [
 ESRIRaster >> initialize [
 
 	super initialize. 
-	noData := -9999
+	noData := -9999.
+	numberOfColumns := 0.
+	numberOfRows := 0. 
+	xllcenter := 0. 
+	yllcenter := 0. 
+	xllcorner := 0. 
+	yllcorner := 0. 
+	cellSize := 0.
+	rows := OrderedCollection new. 
 ]
 
 { #category : #accessing }
@@ -124,6 +134,16 @@ ESRIRaster >> xllcenter: anObject [
 ]
 
 { #category : #accessing }
+ESRIRaster >> xllcorner [
+	^ xllcorner
+]
+
+{ #category : #accessing }
+ESRIRaster >> xllcorner: anObject [
+	xllcorner := anObject
+]
+
+{ #category : #accessing }
 ESRIRaster >> yllcenter [
 	^ yllcenter
 ]
@@ -131,4 +151,14 @@ ESRIRaster >> yllcenter [
 { #category : #accessing }
 ESRIRaster >> yllcenter: anObject [
 	yllcenter := anObject
+]
+
+{ #category : #accessing }
+ESRIRaster >> yllcorner [
+	^ yllcorner
+]
+
+{ #category : #accessing }
+ESRIRaster >> yllcorner: anObject [
+	yllcorner := anObject
 ]

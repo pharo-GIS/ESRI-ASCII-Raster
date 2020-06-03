@@ -46,6 +46,8 @@ ESRIParser >> initializeBuilderMapping [
 	builderMapping at: #nrows put: #numberOfRows:.
 	builderMapping at: #xllcenter put: #xllcenter:.
 	builderMapping at: #yllcenter put: #xllcenter:.
+	builderMapping at: #xllcorner put: #xllcorner:.
+	builderMapping at: #yllcorner put: #xllcorner:.
 	builderMapping at: #cellsize put: #cellSize:.
 	builderMapping at: #nodata_value put: #noData:.
 	

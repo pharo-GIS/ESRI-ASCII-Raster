@@ -18,10 +18,37 @@ YLLCORNER xxx'.
 ]
 
 { #category : #tests }
+ESRIParserTest >> testHandleCellSize [
+
+	| parser |
+	parser := ESRIParser new.
+	parser handeline: 'CELLSIZE 30'.
+	self assert: parser raster cellSize equals: 30
+]
+
+{ #category : #tests }
 ESRIParserTest >> testHandleNCols [
 
 	| parser |
 	parser := ESRIParser new.
 	parser handeline: 'NCOLS 2'.
 	self assert: parser raster numberOfColumns equals: 2
+]
+
+{ #category : #tests }
+ESRIParserTest >> testHandleNRows [
+
+	| parser |
+	parser := ESRIParser new.
+	parser handeline: 'nrows 2'.
+	self assert: parser raster numberOfRows equals: 2
+]
+
+{ #category : #tests }
+ESRIParserTest >> testHandlexllcorner [
+
+	| parser |
+	parser := ESRIParser new.
+	parser handeline: 'xllcorner 378923'.
+	self assert: parser raster xllcorner equals: 378923
 ]
