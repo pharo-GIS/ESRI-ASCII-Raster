@@ -4,7 +4,17 @@ Class {
 	#category : #ESRI
 }
 
-{ #category : #tests }
+{ #category : #'tests - data' }
+ESRIParserTest >> testDataOneCell [
+
+	| parser |
+	parser := ESRIParser new.
+	parser raster numberOfColumns: 4. 
+	parser handleData: #('-9999' '-9999' '5' '2').
+	self assert: parser raster rows first equals: #(-9999 -9999 5 2)
+]
+
+{ #category : #'tests -  header' }
 ESRIParserTest >> testHandleCellSize [
 
 	| parser |
@@ -13,7 +23,7 @@ ESRIParserTest >> testHandleCellSize [
 	self assert: parser raster cellSize equals: 30
 ]
 
-{ #category : #tests }
+{ #category : #'tests -  header' }
 ESRIParserTest >> testHandleNCols [
 
 	| parser |
@@ -22,7 +32,7 @@ ESRIParserTest >> testHandleNCols [
 	self assert: parser raster numberOfColumns equals: 2
 ]
 
-{ #category : #tests }
+{ #category : #'tests -  header' }
 ESRIParserTest >> testHandleNRows [
 
 	| parser |
@@ -31,7 +41,7 @@ ESRIParserTest >> testHandleNRows [
 	self assert: parser raster numberOfRows equals: 2
 ]
 
-{ #category : #tests }
+{ #category : #'tests -  header' }
 ESRIParserTest >> testHandlexllcorner [
 
 	| parser |
@@ -40,7 +50,7 @@ ESRIParserTest >> testHandlexllcorner [
 	self assert: parser raster xllcorner equals: 378923
 ]
 
-{ #category : #tests }
+{ #category : #'tests -  header' }
 ESRIParserTest >> testParse [
 
 	| parser |

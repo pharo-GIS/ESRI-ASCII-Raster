@@ -58,6 +58,12 @@ Class {
 	#category : #ESRI
 }
 
+{ #category : #adding }
+ESRIRaster >> addRow: aRow [
+
+	rows add: aRow
+]
+
 { #category : #accessing }
 ESRIRaster >> cellSize [
 	^ cellSize
