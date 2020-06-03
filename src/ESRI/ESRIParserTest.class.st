@@ -5,13 +5,36 @@ Class {
 }
 
 { #category : #'tests - data' }
-ESRIParserTest >> testDataOneCell [
+ESRIParserTest >> testDataOneRow [
 
 	| parser |
 	parser := ESRIParser new.
 	parser raster numberOfColumns: 4. 
 	parser handleData: #('-9999' '-9999' '5' '2').
 	self assert: parser raster rows first equals: #(-9999 -9999 5 2)
+]
+
+{ #category : #'tests - data' }
+ESRIParserTest >> testFull [
+
+	| parser |
+	parser := ESRIParser new.
+	parser parse: 'ncols 4
+nrows 6
+xllcorner 0.0
+yllcorner 0.0
+cellsize 50.0
+NODATA_value -9999
+-9999 -9999 5 2
+-9999 20 100 36
+3 8 35 10
+32 42 50 6
+88 75 27 9
+13 5 1 -9999'.
+	self assert: parser raster numberOfRows equals: 6.
+	self assert: parser raster rows size equals: 6.
+	self assert: parser raster rows last equals: #(13 5 1 -9999)
+	
 ]
 
 { #category : #'tests -  header' }

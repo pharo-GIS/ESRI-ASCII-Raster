@@ -59,7 +59,6 @@ Class {
 	#name : #ESRIParser,
 	#superclass : #Object,
 	#instVars : [
-		'lines',
 		'raster',
 		'builderMapping'
 	],
@@ -122,11 +121,6 @@ ESRIParser >> initializeBuilderMapping [
 { #category : #initialization }
 ESRIParser >> initializeRaster [
 	raster := ESRIRaster new
-]
-
-{ #category : #'accessing-private' }
-ESRIParser >> lines [
-	^ lines
 ]
 
 { #category : #private }
