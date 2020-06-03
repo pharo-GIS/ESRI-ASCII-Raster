@@ -10,18 +10,7 @@ Class {
 }
 
 { #category : #private }
-ESRIParser >> cutLines: aString [ 
-	| str | 
-	lines := OrderedCollection new. 
-	str := aString readStream.
-	[ str atEnd ] whileFalse: 
-		[ lines add: (str upTo: Character cr) ].
-	^ lines
-	
-]
-
-{ #category : #private }
-ESRIParser >> handeline: aString [ 
+ESRIParser >> handleLine: aString [ 
 	
 	| contents |
 	contents := (aString splitOn: Character space).
@@ -32,9 +21,9 @@ ESRIParser >> handeline: aString [
 ]
 
 { #category : #initialization }
-ESRIParser >> initialize [ 
-	super initialize. 
-	raster := ESRIRaster new.
+ESRIParser >> initialize [
+	super initialize.
+	self initializeRaster.
 	self initializeBuilderMapping
 ]
 
@@ -45,17 +34,33 @@ ESRIParser >> initializeBuilderMapping [
 	builderMapping at: #ncols put: #numberOfColumns:.
 	builderMapping at: #nrows put: #numberOfRows:.
 	builderMapping at: #xllcenter put: #xllcenter:.
-	builderMapping at: #yllcenter put: #xllcenter:.
+	builderMapping at: #yllcenter put: #yllcenter:.
 	builderMapping at: #xllcorner put: #xllcorner:.
-	builderMapping at: #yllcorner put: #xllcorner:.
+	builderMapping at: #yllcorner put: #yllcorner:.
 	builderMapping at: #cellsize put: #cellSize:.
 	builderMapping at: #nodata_value put: #noData:.
 	
 ]
 
+{ #category : #initialization }
+ESRIParser >> initializeRaster [
+	raster := ESRIRaster new
+]
+
 { #category : #'accessing-private' }
 ESRIParser >> lines [
 	^ lines
+]
+
+{ #category : #private }
+ESRIParser >> parse: aString [ 
+	| str | 
+	self initializeRaster.
+	str := aString readStream.
+	[ str atEnd ] whileFalse: 
+		[ self handleLine: (str upTo: Character cr) ].
+
+	
 ]
 
 { #category : #accessing }

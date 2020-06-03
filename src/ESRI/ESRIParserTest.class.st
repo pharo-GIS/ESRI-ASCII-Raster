@@ -5,24 +5,11 @@ Class {
 }
 
 { #category : #tests }
-ESRIParserTest >> testCutLines [
-
-	| parser |
-	parser := ESRIParser new.
-	parser cutLines: 'NCOLS xxx
-NROWS xxx
-XLLCORNER xxx
-YLLCORNER xxx'. 
-	self assert: parser lines first equals: 'NCOLS xxx'.
-	self assert: parser lines size equals: 4.
-]
-
-{ #category : #tests }
 ESRIParserTest >> testHandleCellSize [
 
 	| parser |
 	parser := ESRIParser new.
-	parser handeline: 'CELLSIZE 30'.
+	parser handleLine: 'CELLSIZE 30'.
 	self assert: parser raster cellSize equals: 30
 ]
 
@@ -31,7 +18,7 @@ ESRIParserTest >> testHandleNCols [
 
 	| parser |
 	parser := ESRIParser new.
-	parser handeline: 'NCOLS 2'.
+	parser handleLine: 'NCOLS 2'.
 	self assert: parser raster numberOfColumns equals: 2
 ]
 
@@ -40,7 +27,7 @@ ESRIParserTest >> testHandleNRows [
 
 	| parser |
 	parser := ESRIParser new.
-	parser handeline: 'nrows 2'.
+	parser handleLine: 'nrows 2'.
 	self assert: parser raster numberOfRows equals: 2
 ]
 
@@ -49,6 +36,21 @@ ESRIParserTest >> testHandlexllcorner [
 
 	| parser |
 	parser := ESRIParser new.
-	parser handeline: 'xllcorner 378923'.
+	parser handleLine: 'xllcorner 378923'.
 	self assert: parser raster xllcorner equals: 378923
+]
+
+{ #category : #tests }
+ESRIParserTest >> testParse [
+
+	| parser |
+	parser := ESRIParser new.
+	parser parse: 'NCOLS 20
+NROWS 30
+XLLCORNER 2
+YLLCORNER 3'. 
+	self assert: parser raster numberOfColumns equals: 20.
+	self assert: parser raster numberOfRows equals: 30.
+	self assert: parser raster xllcorner equals: 2.
+	self assert: parser raster yllcorner equals: 3.
 ]
