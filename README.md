@@ -1,5 +1,5 @@
 # ESRI-ASCII-Raster
-to parse... http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/ESRI_ASCII_raster_format/009t0000000z000000/
+To parse... [ESRI ASCII raster](http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/ESRI_ASCII_raster_format/009t0000000z000000/)
 
 This is simple implementation that parses and produces a RASTER object containing maps.
 
@@ -33,4 +33,21 @@ row 1
 row 2
 ...
 row n
+```
+
+Here is an tiny example
+
+```
+ncols 4
+nrows 6
+xllcorner 0.0
+yllcorner 0.0
+cellsize 50.0
+NODATA_value -9999
+-9999 -9999 5 2
+-9999 20 100 36
+3 8 35 10
+32 42 50 6
+88 75 27 9
+13 5 1 -9999
 ```
