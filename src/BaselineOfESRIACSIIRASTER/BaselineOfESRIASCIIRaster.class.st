@@ -1,11 +1,11 @@
 Class {
-	#name : #BaselineOfESRIACSIIRASTER,
+	#name : #BaselineOfESRIASCIIRaster,
 	#superclass : #BaselineOf,
 	#category : #BaselineOfESRIACSIIRASTER
 }
 
 { #category : #baselines }
-BaselineOfESRIACSIIRASTER >> baseline: spec [
+BaselineOfESRIASCIIRaster >> baseline: spec [
 	<baseline>
 
 	spec for: #'common' do: [
