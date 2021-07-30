@@ -1,7 +1,7 @@
 Class {
 	#name : #BaselineOfESRIASCIIRaster,
 	#superclass : #BaselineOf,
-	#category : #BaselineOfESRIACSIIRASTER
+	#category : #BaselineOfESRIASCIIRaster
 }
 
 { #category : #baselines }
